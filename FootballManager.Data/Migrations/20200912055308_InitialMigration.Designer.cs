@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FootballManager.Data.Migrations
 {
     [DbContext(typeof(FootballManagerContext))]
-    [Migration("20200716180059_improvedModels")]
-    partial class improvedModels
+    [Migration("20200912055308_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Club", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Club", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace FootballManager.Data.Migrations
                     b.ToTable("Clubs");
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.ClubTournament", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.ClubTournament", b =>
                 {
                     b.Property<int>("ClubId")
                         .HasColumnType("int");
@@ -57,7 +57,7 @@ namespace FootballManager.Data.Migrations
                     b.ToTable("ClubTournament");
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Coach", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Coach", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,7 +81,7 @@ namespace FootballManager.Data.Migrations
                     b.ToTable("Coaches");
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Footballer", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Footballer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -104,7 +104,7 @@ namespace FootballManager.Data.Migrations
                     b.ToTable("Footballers");
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Stadium", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Stadium", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -128,7 +128,7 @@ namespace FootballManager.Data.Migrations
                     b.ToTable("Stadiums");
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Tournament", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Tournament", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -143,44 +143,44 @@ namespace FootballManager.Data.Migrations
                     b.ToTable("Tournaments");
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.ClubTournament", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.ClubTournament", b =>
                 {
-                    b.HasOne("FootballManagerASP_NETCore3_1.API.Club", "Club")
-                        .WithMany("ClubTournament")
+                    b.HasOne("FootballManager.Data.Models.Club", "Clubs")
+                        .WithMany("ClubTournaments")
                         .HasForeignKey("ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FootballManagerASP_NETCore3_1.API.Tournament", "Tournament")
+                    b.HasOne("FootballManager.Data.Models.Tournament", "Tournaments")
                         .WithMany("ClubTournament")
                         .HasForeignKey("TournamentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Coach", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Coach", b =>
                 {
-                    b.HasOne("FootballManagerASP_NETCore3_1.API.Club", "Club")
-                        .WithOne("Coaches")
-                        .HasForeignKey("FootballManagerASP_NETCore3_1.API.Coach", "ClubId")
+                    b.HasOne("FootballManager.Data.Models.Club", "Club")
+                        .WithOne("Coach")
+                        .HasForeignKey("FootballManager.Data.Models.Coach", "ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Footballer", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Footballer", b =>
                 {
-                    b.HasOne("FootballManagerASP_NETCore3_1.API.Club", "Club")
+                    b.HasOne("FootballManager.Data.Models.Club", "Club")
                         .WithMany("Footballers")
                         .HasForeignKey("ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FootballManagerASP_NETCore3_1.API.Stadium", b =>
+            modelBuilder.Entity("FootballManager.Data.Models.Stadium", b =>
                 {
-                    b.HasOne("FootballManagerASP_NETCore3_1.API.Club", "Club")
-                        .WithOne("Stadiums")
-                        .HasForeignKey("FootballManagerASP_NETCore3_1.API.Stadium", "ClubId")
+                    b.HasOne("FootballManager.Data.Models.Club", "Club")
+                        .WithOne("Stadium")
+                        .HasForeignKey("FootballManager.Data.Models.Stadium", "ClubId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

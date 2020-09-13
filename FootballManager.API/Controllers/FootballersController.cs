@@ -21,7 +21,7 @@ namespace FootballManager.API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class FootballersController : ControllerBase
+    public class FootballersController : Controller
     {
         private readonly FootballManagerContext _context;
         private readonly IFootballerRepository _repository;

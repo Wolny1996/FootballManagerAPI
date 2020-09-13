@@ -20,10 +20,6 @@ namespace FootballManager.API.Validators
             RuleFor(f => f.Founded.Year).GreaterThan(1857).LessThanOrEqualTo(DateTime.Today.Year);
             RuleFor(f => f.Founded.Month).GreaterThan(0).LessThanOrEqualTo(12);
             RuleFor(f => f.Founded.Day).GreaterThan(0).LessThanOrEqualTo(31);
-            
-            var firstClubFoundedDate = new DateTime(1857-10-24).Date;
-            var todayDate = DateTime.Today.Date;
-            // RuleFor(x => x.Founded).NotEmpty().Must(f => f =< firstClubFoundedDate && >= todayDate);
         }
     }
 }

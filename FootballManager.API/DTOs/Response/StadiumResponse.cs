@@ -1,6 +1,4 @@
-﻿using FootballManager.API.DTOs.Transfer;
-
-namespace FootballManager.API.DTOs.Response
+﻿namespace FootballManager.API.DTOs.Response
 {
     public class StadiumResponse
     {

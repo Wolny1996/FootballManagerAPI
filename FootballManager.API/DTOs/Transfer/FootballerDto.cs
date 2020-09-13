@@ -1,6 +1,6 @@
 ﻿namespace FootballManager.API.DTOs.Transfer
 {
-    public class CoachDto
+    public class FootballerDto
     {
         public string FullName { get; set; }
     }

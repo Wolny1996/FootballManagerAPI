@@ -1,6 +1,5 @@
 ﻿using FootballManager.Data.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace FootballManager.Data
 {

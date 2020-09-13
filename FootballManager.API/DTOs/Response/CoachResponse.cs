@@ -1,7 +1,4 @@
-﻿using FootballManager.API.DTOs.Transfer;
-using FootballManager.Data.Models;
-
-namespace FootballManager.API.DTOs.Response
+﻿namespace FootballManager.API.DTOs.Response
 {
     public class CoachResponse
     {

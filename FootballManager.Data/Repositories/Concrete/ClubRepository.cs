@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using FootballManager.Data.Models;
 using Microsoft.Data.SqlClient;
@@ -36,9 +35,9 @@ namespace FootballManager.Data.Repositories.Concrete
                 TimeSpan.FromSeconds(10),
                 TimeSpan.FromSeconds(15),
             }, (ext, timeSpan, retryCount, context) =>
-                {
-                    _logger.LogError(ext, $"Error - try retry (count: {retryCount}, timeSpan: {timeSpan})");
-                });
+            {
+                _logger.LogError(ext, $"Error - try retry (count: {retryCount}, timeSpan: {timeSpan})");
+            });
 
             var searchedClub = await policy.ExecuteAsync(() => query.FirstOrDefaultAsync(c => c.ClubName == clubName));
 
@@ -67,9 +66,9 @@ namespace FootballManager.Data.Repositories.Concrete
                 TimeSpan.FromSeconds(10),
                 TimeSpan.FromSeconds(15),
             }, (ext, timeSpan, retryCount, context) =>
-                {
-                    _logger.LogError(ext, $"Error - try retry (count: {retryCount}, timeSpan: {timeSpan})");
-                });
+            {
+                _logger.LogError(ext, $"Error - try retry (count: {retryCount}, timeSpan: {timeSpan})");
+            });
 
             var clubs = await policy.ExecuteAsync(() => query.ToListAsync());
 

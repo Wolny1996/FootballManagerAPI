@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using FootballManager.API.DTOs.Command;
@@ -19,7 +18,7 @@ namespace FootballManager.API.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class ClubsController : ControllerBase
+    public class ClubsController : Controller
     {
         private readonly FootballManagerContext _context;
         private readonly IClubRepository _repository;
@@ -88,13 +87,13 @@ namespace FootballManager.API.Controllers
             {
                 var clubs = await _repository.GetAllClubs();
                 var clubsResponse = new List<ClubResponse>();
-                
+
                 foreach (var c in clubs)
                 {
                     var clubResponse = _mapper.Map<ClubResponse>(c);
                     clubsResponse.Add(clubResponse);
                 }
-                
+
                 _logger.LogInformation($"Clubs have been downloaded.");
                 return Ok(clubsResponse);
             }
